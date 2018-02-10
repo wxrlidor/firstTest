@@ -1,0 +1,42 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.youtu</groupId>
+    <artifactId>youtu-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>com.youtu</groupId>
+  <artifactId>youtu-manager</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <!-- 依赖管理，需要依赖youtu-common -->
+  <dependencies>
+  	<dependency>
+  		<groupId>com.youtu</groupId>
+	  <artifactId>youtu-common</artifactId>
+	  <version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
+  <!-- 模块配置，创建模块时自动添加的 -->
+  <modules>
+  	<module>youtu-manager-pojo</module>
+  	<module>youtu-manager-mapper</module>
+  	<module>youtu-manager-service</module>
+  	<module>youtu-manager-web</module>
+  </modules>
+  <!-- 配置Maven自带的Tomcat插件 -->
+  <build>
+  	<plugins>
+  		<plugin>
+  			<groupId>org.apache.tomcat.maven</groupId>
+			<artifactId>tomcat7-maven-plugin</artifactId>
+			<configuration>
+				<!-- 配置端口号 -->
+				<port>8080</port>
+				<!-- 配置访问路径 localhost:8080/ -->
+				<path>/</path>
+			</configuration>
+  		</plugin>
+  	</plugins>
+  </build>
+</project>

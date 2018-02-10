@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	<!-- 扫描controller注解 -->
+	<context:component-scan base-package="com.youtu.controller" />
+	<mvc:annotation-driven />
+	
+	<!-- 配置视图解析器 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- 这个是页面的实际位置 -->
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<!-- 这个是页面的后缀，也就是说控制器返回index这个字符的话，就是跳转到/WEB-INF/jsp/index.jsp而不是index.html或者index.XXX -->
+		<property name="suffix" value=".jsp" />
+	</bean>
+	
+	<!-- 定义文件上传解析器 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 设定默认编码 -->
+		<property name="defaultEncoding" value="UTF-8"></property>
+		<!-- 设定文件上传的最大值5MB，5*1024*1024 -->
+		<property name="maxUploadSize" value="5242880"></property>
+	</bean>
+	
+	<!-- 配置静态资源映射，防止被springmvc拦截 -->
+	<!-- location:资源的实际位置   mapping：在服务器中的请求格式，只要是以下格式的请求，都会去被映射到资源的实际位置中去找资源 -->
+	<mvc:resources location="/WEB-INF/css/" mapping="/css/**"/>
+	<mvc:resources location="/WEB-INF/js/" mapping="/js/**"/>
+</beans>
