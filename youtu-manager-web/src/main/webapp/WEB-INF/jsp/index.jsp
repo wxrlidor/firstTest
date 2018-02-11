@@ -18,7 +18,7 @@
 </style>
 </head>
 <body class="easyui-layout">
-    <div data-options="region:'west',title:'菜单',split:true" style="width:180px;">
+    <div data-options="region:'west',title:'111菜单',split:true" style="width:180px;">
     	<ul id="menu" class="easyui-tree" style="margin-top: 10px;margin-left: 5px;">
          	<li>
          		<span>商品管理</span>
